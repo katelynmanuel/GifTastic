@@ -25,7 +25,7 @@ $(document).ready(function () {
         var animalGif = $(this).attr("data-name");
 
         //Creating URL to search Giphy for the animal inputted by the user
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animalGif + "&api_key=2D2bvWjIpa5c1hnfkWMfda6UcvyiZ6Ep&limit=5";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animalGif + "&api_key=2D2bvWjIpa5c1hnfkWMfda6UcvyiZ6Ep&limit=10";
 
         //Performing AJAX GET request
         $.ajax({
@@ -52,16 +52,19 @@ $(document).ready(function () {
                 stillGifImage.addClass("gif");
 
                 //Add image element to hold gif results
-                var imageDiv = $("<div>");
-                imageDiv.addClass("animate");
+                var imageDiv = $("<img>");
+                imageDiv.addClass("gif");
+                imageDiv.attr("id", i);
+                imageDiv.attr("src", gifResults[i].images.fixed_height_still.url);
                 imageDiv.attr("data-state", "still");
                 imageDiv.attr("data-name", "topic");
                 imageDiv.attr("data-still", gifResults[i].images.fixed_height_still.url);
-                imageDiv.attr("data-animate",gifResults[i].images.fixed_height.url);
+                imageDiv.attr("data-animate", gifResults[i].images.fixed_height.url);
 
+                console.log("This is our animate url " + gifResults[i].images.fixed_height.url);
                 //Append gifImage and gifRating to the gif results div
-                gifDiv.append(stillGifImage)
-                gifDiv.append(gifRating)
+                gifDiv.append(imageDiv);
+                gifDiv.append(gifRating);
 
                 //Prepending the gifDiv to the return animals div in the HTML
                 $("#returnAnimals").prepend(gifDiv);
@@ -69,22 +72,35 @@ $(document).ready(function () {
 
         });
 
+        console.log(queryURL);
+
     });
 
     //Create function to animate gifs
     function animateGif () {
+        console.log($(this));
         var state = $(this).attr("data-state");
         console.log("This is the state: " + state);
         if (state === "still") {
-            $(this).html("<img src='" + $(this).attr("data-animate") + "'>");
+            console.log("hello");
+            console.log("animate " + $(this).attr("data-animate"));
+            $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
+            // $(".gif").html("<img src='" + $(".gif").attr("data-animate") + "'>");
+            // $(".gif").attr("data-state", "animate");
             
         } else {
-			$(this).html("<img src='" + $(this).attr("data-still") + "'>");
-			$(this).attr("data-state", "still");
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+            console.log("still " + $(this).attr("data-still"));
+			// $(".gif").html("<img src='" + $(".gif").attr("data-still") + "'>");
+			// $(".gif").attr("data-state", "still");
 		}
    };
 
-    renderButton();
+   
     $(document).on("click", ".gif", animateGif);
+
+    renderButton();
+    // console.log("This is working" + animateGif);
 });
