@@ -17,6 +17,39 @@ $(document).ready(function () {
         console.log(newButton);
     };
 
+    //Add new button from form
+   $("#userSubmit").on("click", function (event) {
+        console.log("This is the event function" + event);
+        event.preventDefault();
+        var animalGif = $("#userInput").val().toLowerCase().trim();
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animalGif + "&api_key=2D2bvWjIpa5c1hnfkWMfda6UcvyiZ6Ep&limit=10";
+        console.log("this is the User Input Animal: " + animalGif);
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+     
+        //After data comes back from the API
+        .then(function(response) {
+            var gifResults = response.data;
+
+            if (gifResults.length == 0) {
+                alert("Sorry, there are no GIFs found for this topic.");
+                console.log("This is the Response Data Length: " + gifResults.length);
+            }
+            else if (topics.indexOf(animalGif) > -1) {
+                alert ("This topic already exists!");
+                console.log("This is the Else if Topics: " + topics);
+                console.log("Else if Statement: " + animalGif.indexOf(topics) > -1);
+            } 
+            else {
+                topics.push(animalGif);
+                renderButton();  
+                console.log("This is the array " + topics); 
+            }
+        });
+    });
+
     //Create Event Listener for all button elements
     $(document).on("click", ".btn", function (event) {
         event.preventDefault();
@@ -47,9 +80,9 @@ $(document).ready(function () {
                 //Assign rating of gif to variable
                 var gifRating = `<h4>Rating: ${gifResults[i].rating.toUpperCase()}</h4>`;
 
-                //Get the source of the image with API 
-                var stillGifImage = $("<img src='" + gifResults[i].images.fixed_height_still.url + "'>");
-                stillGifImage.addClass("gif");
+                // //Get the source of the image with API 
+                // var stillGifImage = $("<img src='" + gifResults[i].images.fixed_height_still.url + "'>");
+                // stillGifImage.addClass("gif");
 
                 //Add image element to hold gif results
                 var imageDiv = $("<img>");
@@ -97,10 +130,7 @@ $(document).ready(function () {
 			// $(".gif").attr("data-state", "still");
 		}
    };
-
    
     $(document).on("click", ".gif", animateGif);
-
     renderButton();
-    // console.log("This is working" + animateGif);
 });
