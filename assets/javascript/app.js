@@ -2,7 +2,7 @@ $(document).ready(function () {
 
  
     //Create array of animal buttons
-    var topics = ["Dog", "Cat", "Horse", "Owl", "Bear", "Bird"];
+    var topics = ["Dog", "Cat", "Horse", "Owl", "Bear", "Bird", "Lion", "Panda", "Squirrel", "Fox", "Giraffe", "Zebra", "Pig"];
     console.log("These are the topics: " + topics);
 
     //Give each item in the array a button.
@@ -32,6 +32,8 @@ $(document).ready(function () {
         //After data comes back from the API
         .then(function(response) {
             var gifResults = response.data;
+            var form = document.getElementById("animalForm");
+
 
             if (gifResults.length == 0) {
                 alert("Sorry, there are no GIFs found for this topic.");
@@ -44,8 +46,10 @@ $(document).ready(function () {
             } 
             else {
                 topics.push(animalGif);
+                $("#animalButtons").html("");
                 renderButton();  
                 console.log("This is the array " + topics); 
+                form.reset();
             }
         });
     });

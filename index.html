@@ -13,25 +13,44 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-12">
+                <div class="jumbotron">
+                    <h1>GifTastic Animals</h1>
+                    <br/>
+                    <p>Select a button to see some fantastic animal gifs. Then add your own button!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
                 <div id="animalButtons"></div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <form id="animalForm">
-                    <label for="animalInputForm">Add an Animal</label>
-                    <input type="text" id="userInput"></input>
-                    <input type="submit" value="Submit" id="userSubmit"></input>
-                </form>
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Add an Animal</h2>
+                    </div> 
+                    <div class="form">
+                        <form id="animalForm">
+                            <p>
+                                Want to see some more animal gifs? <br/> 
+                                Add your favorite animals to the list below! 
+                            </p>
+                            <input type="text" id="userInput"></input>
+                            <input type="submit" value="Submit" id="userSubmit"></input>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
+            
         <div class="row">
-            <div class="col-md-12" id="returnAnimals"></div>
+            <div class="col-lg-6">
+                <div id="returnAnimals"></div>
+            </div>
         </div>
     </div>
-    
 </body>
 </html>

@@ -1,0 +1,39 @@
+h1,
+h2,
+p {
+    text-align: center;
+}
+
+.jumbotron {
+    background-color: #aea7a4;
+}
+
+#animalButtons {
+    margin: 10px;
+}
+
+.btn {
+    margin-right: 2%;
+    margin-bottom: 2%;
+    background-color: #c5caca;
+}
+
+.form {
+    padding: 20px;
+    text-align: center;
+}
+
+#userSubmit {
+    margin: 2%;
+}
+
+.card-header {
+    background-color: #dbccc6;
+}
+
+#returnAnimals {
+    margin: 2%;
+}
+
+
+
