@@ -20,3 +20,7 @@ Next I crete an event listener for button clicks and performing AJAX request to 
 ### Step Four
 
 In the last step, I create the function to animate the gifs using the attributes defined in the the previous step. If the state is still, we change the attribute to animated and back again to still on second click. 
+
+### Deployed Project
+
+https://katelynmanuel.github.io/GifTastic/
