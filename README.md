@@ -5,6 +5,10 @@ Assignment Six: GifTastic
 
 In this assignment, I'm utilizing the Giphy API to display related gifs to the user when they click on a button. The user can also add buttons to the existing list with a form. 
 
+### Deployed Project
+
+https://katelynmanuel.github.io/GifTastic/
+
 ### Step One
 
 After creating the shell for the HTML page, I create an array to hold the predefined list of animal buttons for the user to click on. I create the button in the next step that will display the animal as a clickable button on the HTML page. 
@@ -21,6 +25,3 @@ Next I crete an event listener for button clicks and performing AJAX request to 
 
 In the last step, I create the function to animate the gifs using the attributes defined in the the previous step. If the state is still, we change the attribute to animated and back again to still on second click. 
 
-### Deployed Project
-
-https://katelynmanuel.github.io/GifTastic/
