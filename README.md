@@ -1,7 +1,7 @@
 # GifTastic
 Assignment Six: GifTastic
 
-###Overview 
+### Overview 
 
 In this assignment, I'm utilizing the Giphy API to display related gifs to the user when they click on a button. The user can also add buttons to the existing list with a form. 
 
